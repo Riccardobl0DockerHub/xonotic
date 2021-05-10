@@ -23,7 +23,9 @@ RUN curl $DOWNLOAD_URL  -o /tmp/xonotic.zip && \
     
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN useradd -ms /bin/bash --gid 1000 --uid 1000 xonotic&&chown xonotic:xonotic /app/Xonotic
+USER xonotic
 
 WORKDIR /app/Xonotic
 
-ENTRYPOINT ["/app/Xonotic/xonotic-linux64-dedicated", "+serverconfig", "/app/Xonotic/server.cfg"]
+ENTRYPOINT ["/app/Xonotic/xonotic-linux64-dedicated"]
