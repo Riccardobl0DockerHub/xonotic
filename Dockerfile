@@ -27,6 +27,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN groupadd --gid 1000 xonotic 
 RUN useradd --uid 1000 -r --gid 1000 xonotic
 RUN chown xonotic:xonotic -Rf /app/Xonotic
+RUN mkdir -p /home/xonotic&&chown xonotic:xonotic -Rf /home/xonotic
 USER xonotic
 
 WORKDIR /app/Xonotic
